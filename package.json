@@ -1,0 +1,69 @@
+{
+  "name": "analyzer-app",
+  "private": true,
+  "version": "1.1.3-v5",
+  "main": "electron-main.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "npm run build && electron-builder",
+    "pack": "npm run build && npx electron-packager . 판매분석솔루션 --platform=win32 --arch=x64 --out=dist-packaged --overwrite"
+  },
+  "build": {
+    "appId": "com.sales.analyzer",
+    "productName": "판매분석 솔루션",
+    "copyright": "Copyright © 2024",
+    "directories": {
+      "output": "release-new"
+    },
+    "icon": "build/icon.png",
+    "files": [
+      "dist/**/*",
+      "electron-main.cjs"
+    ],
+    "win": {
+      "target": "portable",
+      "forceCodeSigning": false
+    }
+  },
+  "dependencies": {
+    "csv-parse": "^6.2.1",
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5",
+    "iconv-lite": "^0.7.2",
+    "lodash": "^4.18.1",
+    "lucide-react": "^1.14.0",
+    "papaparse": "^5.5.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "recharts": "^3.8.1",
+    "xlsx": "^0.18.5",
+    "xlsx-js-style": "^1.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "buffer": "^6.0.3",
+    "concurrently": "^9.2.1",
+    "electron": "^42.0.0",
+    "electron-builder": "^26.8.1",
+    "electron-is-dev": "^3.0.1",
+    "electron-packager": "^17.1.2",
+    "eslint": "^10.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "events": "^3.3.0",
+    "globals": "^17.5.0",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5",
+    "vite": "^8.0.10",
+    "vite-plugin-node-polyfills": "^0.26.0",
+    "wait-on": "^9.0.5"
+  }
+}
